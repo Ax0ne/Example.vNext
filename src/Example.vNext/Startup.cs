@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
+using Microsoft.AspNet.Diagnostics;
+using Microsoft.AspNet.Hosting;
 using Microsoft.Framework.DependencyInjection;
 
 namespace Example.vNext
@@ -13,19 +15,10 @@ namespace Example.vNext
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index" }
-                    );
-            });
         }
     }
 }
